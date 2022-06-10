@@ -1,4 +1,4 @@
-package com.example.listn
+package com.example.listn.data.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
