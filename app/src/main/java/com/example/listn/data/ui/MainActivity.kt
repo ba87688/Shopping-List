@@ -14,8 +14,14 @@ import com.example.listn.data.ui.shoppinglist.AddShoppingItemDialog
 import com.example.listn.data.ui.shoppinglist.ShoppingViewModel
 import com.example.listn.data.ui.shoppinglist.ShoppingViewModelFactory
 import com.example.listn.databinding.ActivityMainBinding
+import org.kodein.di.KodeinAware
+import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),KodeinAware {
+
+    override val kodein by kodein()
+    private val factory: ShoppingViewModelFactory by instance()
+
 
     private lateinit var binding : ActivityMainBinding
 
@@ -27,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val database = ShoppingDatabase(this)
-        val repository = ShoppingRepository(database)
-        val factory  = ShoppingViewModelFactory(repository )
+//        val database = ShoppingDatabase(this)
+//        val repository = ShoppingRepository(database)
+//        val factory  = ShoppingViewModelFactory(repository )
         val viewModel = ViewModelProviders.of(this,factory).get(ShoppingViewModel::class.java)
 
 
